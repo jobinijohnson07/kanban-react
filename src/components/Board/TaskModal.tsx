@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Task } from '../../types/task';
-import { X, Trash2 } from 'lucide-react'; 
+import { X } from 'lucide-react'; 
 
 interface TaskModalProps {
   task: Task;
@@ -31,8 +31,8 @@ const TaskModal: React.FC<TaskModalProps> = ({ task, onClose, onDelete }) => {
         </div>
 
         <div className="modal-actions">
-          <button onClick={() => onDelete(task.id)} className="btn-delete-icon" aria-label="Delete Task">
-            <Trash2 size={18} />
+          <button onClick={() => onDelete(task.id)} className="button-content" aria-label="Delete Task">
+            Delete
           </button>
         </div>
       </div>
