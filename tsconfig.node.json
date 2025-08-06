@@ -4,20 +4,21 @@
     "target": "ES2023",
     "lib": ["ES2023"],
     "module": "ESNext",
-    "skipLibCheck": true,
 
-    /* Bundler mode */
+    /* Node compatibility */
+    "types": ["node"],
+
+    /* Bundler mode (Vite-specific) */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "noEmit": true,
 
-    /* Linting */
+    /* Type safety & linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },

@@ -12,6 +12,12 @@ body {
   overflow-x: auto;
 }
 
+.kanban-heading{
+    font-size: 32px;
+    font-weight: 600;
+    color: #172b4d;
+    padding-left: 20px;
+}
 .column {
   flex: 1;
   min-width: 250px;

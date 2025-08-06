@@ -25,7 +25,9 @@ const KanbanBoard = () => {
   };
 
   return (
-    <div className="kanban-board">
+    <div>
+      <div className="kanban-heading">Kanban Board</div>
+      <div className="kanban-board">
       <DragDropContext onDragEnd={onDragEnd}>
         {statuses.map(status => (
           <Column
@@ -36,6 +38,8 @@ const KanbanBoard = () => {
         ))}
       </DragDropContext>
     </div>
+    </div>
+    
   );
 };
 
