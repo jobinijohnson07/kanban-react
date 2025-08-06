@@ -13,10 +13,10 @@ body {
 }
 
 .kanban-heading{
-    font-size: 32px;
-    font-weight: 600;
-    color: #172b4d;
-    padding-left: 20px;
+  font-size: 32px;
+  font-weight: 600;
+  color: #172b4d;
+  padding-left: 20px;
 }
 .column {
   flex: 1;
@@ -82,6 +82,74 @@ body {
   border-radius: 8px;
   font-size: 12px;
   margin-top: 6px;
+}
+
+.title-content{
+  margin-bottom: unset;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  position: relative;
+  background: #fff;
+  padding: 1.5rem;
+  width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.btn-close-icon {
+  position: absolute;
+  top: 8px;
+  right: 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #666;
+}
+
+.btn-close-icon:hover {
+  color: #000000;
+}
+
+.modal-content {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.modal-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-delete-icon {
+  background: transparent;
+  border: none;
+  padding: unset;
+  color: #666;
+  cursor: pointer;
+}
+
+.btn-delete-icon:hover {
+  color: #000000;
 }
 
 

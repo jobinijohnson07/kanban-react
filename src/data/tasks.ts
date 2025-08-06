@@ -8,6 +8,10 @@ export const tasks: Task[] = [
     dueDate: '10-08-2025',
     tag: 'Design',
     status: 'Open',
+    description: 'Design a responsive login page using Figma.',
+    createdAt: '05-08-2025',
+    createdBy: 'John',
+    estimation: '3 points',
   },
   {
     id: '2',
@@ -16,6 +20,10 @@ export const tasks: Task[] = [
     dueDate: '12-08-2025',
     tag: 'Backend',
     status: 'In Progress',
+    description: 'Configure GitHub Actions for automated deployment.',
+    createdAt: '06-08-2025',
+    createdBy: 'Sara',
+    estimation: '5 points',
   },
   {
     id: '3',
@@ -24,6 +32,10 @@ export const tasks: Task[] = [
     dueDate: '15-08-2025',
     tag: 'Frontend',
     status: 'Review',
+    description: 'Complete the given UI Screens.',
+    createdAt: '08-08-2025',
+    createdBy: 'Sweetha',
+    estimation: '4 points',
   },
   {
     id: '4',
@@ -32,6 +44,10 @@ export const tasks: Task[] = [
     dueDate: '14-08-2025',
     tag: 'Frontend',
     status: 'Done',
+    description: 'Review the frontend implementation for logic and UI consistency.',
+    createdAt: '07-08-2025',
+    createdBy: 'Reena',
+    estimation: '8 points',
   },
   {
     id: '5',
@@ -40,5 +56,9 @@ export const tasks: Task[] = [
     dueDate: '11-08-2025',
     tag: 'Design',
     status: 'Open',
+    description: 'Create Wireframes for the design flow.',
+    createdAt: '07-08-2025',
+    createdBy: 'Rahul',
+    estimation: '5 points',
   },
 ];

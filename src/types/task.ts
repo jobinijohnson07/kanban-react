@@ -7,4 +7,8 @@ export interface Task {
   dueDate: string;
   tag: string;
   status: Status;
+  description?: string;
+  createdAt?: string;
+  createdBy?: string;
+  estimation?: string;
 }
