@@ -31,7 +31,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ task, onClose, onDelete }) => {
         </div>
 
         <div className="modal-actions">
-          <button onClick={() => onDelete(task.id)} className="button-content" aria-label="Delete Task">
+          <button onClick={() => onDelete(task.id)} className="deletebutton-content" aria-label="Delete Task">
             Delete
           </button>
         </div>

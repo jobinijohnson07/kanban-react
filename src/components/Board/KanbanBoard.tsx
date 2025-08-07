@@ -3,6 +3,7 @@ import { DragDropContext, type DropResult } from '@hello-pangea/dnd';
 import Column from './Column.tsx';
 import AddTaskForm from './AddTaskForm.tsx';
 import TaskModal from './TaskModal.tsx';
+import Filter from './Filter.tsx';
 import { tasks as initialTasks } from '../../data/tasks';
 import type { Task, Status } from '../../types/task';
 
@@ -12,6 +13,41 @@ const KanbanBoard = () => {
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [showFormModal, setShowFormModal] = useState(false);
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
+
+  const [filters, setFilters] = useState({
+    assignees: [] as string[],
+    assigneeNot: false,
+    tags: [] as string[],
+    tagNot: false,
+    mode: null as 'AND' | 'OR' | null,
+  });
+
+  const filteredTasks = tasks.filter(task => {
+  const assigneeMatch = filters.assigneeNot
+      ? !filters.assignees.includes(task.assignee)
+      : filters.assignees.length === 0 || filters.assignees.includes(task.assignee);
+
+  const tagMatch = filters.tagNot
+      ? !filters.tags.includes(task.tag)
+      : filters.tags.length === 0 || filters.tags.includes(task.tag);
+
+    if (filters.mode === 'AND') {
+      return assigneeMatch && tagMatch;
+    } else if (filters.mode === 'OR') {
+      return assigneeMatch || tagMatch;
+    } else {
+      if (filters.assignees.length > 0 && filters.tags.length > 0) {
+        return assigneeMatch && tagMatch; 
+      } else if (filters.assignees.length > 0) {
+        return assigneeMatch;
+      } else if (filters.tags.length > 0) {
+        return tagMatch;
+      } else {
+        return true; 
+      }
+    }
+  });
+
 
   const onDragEnd = (result: DropResult) => {
     const { destination, source, draggableId } = result;
@@ -40,10 +76,20 @@ const KanbanBoard = () => {
     setSelectedTask(null);
   };
 
+  const assigneeOptions = [...new Set(tasks.map(task => task.assignee))];
+  const tagOptions = [...new Set(tasks.map(task => task.tag))];
+
   return (
     <div>
+      <div className="kanban-heading">Kanban Board</div>
+
       <div className="header-section">
-        <div className="kanban-heading">Kanban Board</div>
+        <Filter
+          assigneeOptions={assigneeOptions}
+          tagOptions={tagOptions}
+          onFilterChange={setFilters}
+        />
+
         <button onClick={() => setShowFormModal(true)} className="button-content">
           Add Task
         </button>
@@ -55,7 +101,7 @@ const KanbanBoard = () => {
             <Column
               key={status}
               status={status}
-              tasks={tasks.filter(task => task.status === status)}
+              tasks={filteredTasks.filter(task => task.status === status)}
               onCardClick={handleCardClick}
             />
           ))}
@@ -92,4 +138,4 @@ const KanbanBoard = () => {
   );
 };
 
-export default KanbanBoard; 
+export default KanbanBoard;
