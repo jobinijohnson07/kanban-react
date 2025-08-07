@@ -45,28 +45,24 @@ const Filter: React.FC<FilterProps> = ({ assigneeOptions, tagOptions, onFilterCh
     });
   };
 
-  // Toggle NOT button for Assignee
   const toggleAssigneeNot = () => {
     const newVal = !assigneeNot;
     setAssigneeNot(newVal);
     handleFilterChange(selectedAssignees, newVal, selectedTags, tagNot, mode);
   };
 
-  // Toggle NOT button for Tag
   const toggleTagNot = () => {
     const newVal = !tagNot;
     setTagNot(newVal);
     handleFilterChange(selectedAssignees, assigneeNot, selectedTags, newVal, mode);
   };
 
-  // Toggle AND/OR mode buttons
   const handleModeChange = (newMode: 'AND' | 'OR') => {
     const updatedMode = mode === newMode ? null : newMode;
     setMode(updatedMode);
     handleFilterChange(selectedAssignees, assigneeNot, selectedTags, tagNot, updatedMode);
   };
 
-  // Update Assignee selections
   const handleAssigneeChange = (
     options: MultiValue<Option>,
     _: ActionMeta<Option>
@@ -76,7 +72,6 @@ const Filter: React.FC<FilterProps> = ({ assigneeOptions, tagOptions, onFilterCh
     handleFilterChange(safeOptions, assigneeNot, selectedTags, tagNot, mode);
   };
 
-  // Update Tag selections
   const handleTagChange = (
     options: MultiValue<Option>,
     _: ActionMeta<Option>
@@ -86,7 +81,6 @@ const Filter: React.FC<FilterProps> = ({ assigneeOptions, tagOptions, onFilterCh
     handleFilterChange(selectedAssignees, assigneeNot, safeOptions, tagNot, mode);
   };
 
-  // Reset all filters
   const handleClear = () => {
     setSelectedAssignees([]);
     setSelectedTags([]);
@@ -98,7 +92,6 @@ const Filter: React.FC<FilterProps> = ({ assigneeOptions, tagOptions, onFilterCh
 
   return (
     <div className={styles.container}>
-      {/* Assignee NOT button */}
       <button
         type="button"
         onClick={toggleAssigneeNot}
@@ -107,7 +100,6 @@ const Filter: React.FC<FilterProps> = ({ assigneeOptions, tagOptions, onFilterCh
         NOT
       </button>
 
-      {/* Assignee multi-select */}
       <div className={styles.selectWrapper}>
         <Select
           isMulti
@@ -118,7 +110,6 @@ const Filter: React.FC<FilterProps> = ({ assigneeOptions, tagOptions, onFilterCh
         />
       </div>
 
-      {/* AND button */}
       <button
         type="button"
         onClick={() => handleModeChange('AND')}
@@ -127,7 +118,6 @@ const Filter: React.FC<FilterProps> = ({ assigneeOptions, tagOptions, onFilterCh
         AND
       </button>
 
-      {/* OR button */}
       <button
         type="button"
         onClick={() => handleModeChange('OR')}
@@ -136,7 +126,6 @@ const Filter: React.FC<FilterProps> = ({ assigneeOptions, tagOptions, onFilterCh
         OR
       </button>
 
-      {/* Tag NOT button */}
       <button
         type="button"
         onClick={toggleTagNot}
@@ -145,7 +134,6 @@ const Filter: React.FC<FilterProps> = ({ assigneeOptions, tagOptions, onFilterCh
         NOT
       </button>
 
-      {/* Tag multi-select */}
       <div className={styles.selectWrapper}>
         <Select
           isMulti
@@ -156,7 +144,6 @@ const Filter: React.FC<FilterProps> = ({ assigneeOptions, tagOptions, onFilterCh
         />
       </div>
 
-      {/* Clear filter button */}
       <button
         type="button"
         onClick={handleClear}
